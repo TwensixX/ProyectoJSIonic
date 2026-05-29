@@ -1,0 +1,70 @@
+header {
+  text-align: center;
+  padding: 20px;
+}
+
+.buscador {
+  display: flex;
+  background-color: #f8eefe;
+  width: 100%;
+  max-width: 60%;
+  justify-self: center;
+  font-size: large;
+  padding: 10px;
+  border: 2px solid #6700a8;
+  border-radius: 15px;
+  outline: none;
+}
+
+a {
+  justify-self: center;
+  width: 90%;
+}
+
+.lista-recetas {
+  display: grid;
+  gap: 40px;
+  margin: 40px 0;
+}
+
+.receta {
+  display: grid;
+  grid-template-areas: 
+  'img-receta desc-receta'
+  'img-receta desc-receta';
+  grid-template-columns: minmax(100px, 150px) 1fr;
+  grid-template-rows: 50px 100px;
+  background-color: #fcf7ffbb;
+  padding: 10px;
+  border: 2px solid rgb(103, 0, 168);
+  border-radius: 10px;
+}
+
+.receta img {
+  grid-area: img-receta;
+  width: 90%;
+  height: 90%;
+  justify-self: center;
+  align-self: center;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.desc-receta {
+  grid-area: desc-receta;
+  padding: 10px;
+  align-content: center;
+}
+
+.desc-receta h2 {
+  align-self: center;
+  margin: 0;
+}
+
+.desc-receta p {
+  margin: 0;
+  max-height: 6em;
+  overflow: hidden;
+  padding-top: 10px;
+  color: #210034;
+}
