@@ -5,13 +5,13 @@ header {
 
 .buscador {
   display: flex;
-  background-color: #f8eefe;
+  background-color: var(--lighter-purple);
   width: 100%;
   max-width: 60%;
   justify-self: center;
   font-size: large;
   padding: 10px;
-  border: 2px solid #6700a8;
+  border: 2px solid var(--purple);
   border-radius: 15px;
   outline: none;
 }
@@ -34,9 +34,9 @@ a {
   'img-receta desc-receta';
   grid-template-columns: minmax(100px, 150px) 1fr;
   grid-template-rows: 50px 100px;
-  background-color: #fcf7ffbb;
+  background-color: var(--transparent-lighter-purple);
   padding: 10px;
-  border: 2px solid rgb(103, 0, 168);
+  border: 2px solid var(--purple);
   border-radius: 10px;
 }
 
@@ -66,5 +66,5 @@ a {
   max-height: 6em;
   overflow: hidden;
   padding-top: 10px;
-  color: #210034;
+  color: var(--dark-purple);
 }

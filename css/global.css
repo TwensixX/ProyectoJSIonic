@@ -1,3 +1,17 @@
+:root {
+  --dark-purple: #28003e;
+  --purple: #6700a8;
+  --transparent-purple: #6700a8bb;
+  --light-purple: #cc6dff;
+  --transparent-light-purple: #cc6dffbb;
+  --lighter-purple: #f8ebff;
+  --transparent-lighter-purple: #f8ebffbb;
+}
+
+* {
+  font-family: sans-serif;
+}
+
 body {
   margin: 0;
   background-image: url("../resources/images/wooden-background.jpg");
@@ -5,10 +19,24 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  font-family: sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  margin: 0;
 }
 
 a {
   color: black;
   text-decoration: none;
+}
+
+input, textarea {
+  outline: none;
 }
