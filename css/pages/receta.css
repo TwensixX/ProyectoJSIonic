@@ -7,12 +7,12 @@ body {
   flex-direction: column;
   justify-self: center;
   width: 80%;
-  padding: 2% 0;
+  padding: 1% 0;
   min-height: 100vh;
 }
 
 header {
-  background-color: var(--transparent-lighter-purple);
+  background-color: var(--transparent-white-purple);
   flex: 0 0 auto;
   border: 2px solid var(--transparent-purple);
   border-bottom: 2px dashed var(--transparent-purple);
@@ -21,7 +21,7 @@ header {
   padding: 20px;
 }
 main {
-  background-color: var(--transparent-lighter-purple);
+  background-color: var(--transparent-white-purple);
   display: flex;
   flex: 1;
   border: 2px solid var(--transparent-purple);
@@ -38,7 +38,7 @@ form {
     "btts-form btts-form";
   gap: 20px;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1.75fr 3fr 0.25fr;
+  grid-template-rows: auto auto auto;
   padding: 10px;
 }
 
@@ -49,7 +49,7 @@ form {
   flex-direction: column;
 }
 
-.image-upload {
+.img-upload {
   border: 2px dashed var(--purple);
   border-radius: 20px;
   cursor: pointer;
@@ -62,11 +62,11 @@ form {
   flex: 1;
 }
 
-.image-upload:hover {
+.img-upload:hover {
   border: 2px dashed var(--dark-purple);
 }
 
-.image-upload img {
+.img-upload img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -111,8 +111,15 @@ input[type="file"] {
 /*INGREDIENTES*/
 .ingredientes {
   grid-area: ingr;
-  background-color: lightskyblue;
   padding: 20px;
+  height: fit-content;
+}
+
+.ingredientes div {
+  border: 2px dotted var(--purple);
+  padding: 20px;
+  border-radius: 20px;
+  background-color: var(--lighter-purple);
 }
 
 .ingredientes h3 {
@@ -139,42 +146,190 @@ li::before {
   flex-shrink: 0;
 }
 
-.ingredientes li button{
+.ingredientes li button {
   border-radius: 100px;
   border: 0;
+  background-color: var(--dark-purple);
+  color: white;
   flex-direction: row;
+  height: 19.88px;
+  font-size: xx-small;
 }
 
-.aniade-ingr {
-  position: relative;
-  top: 20px;
-  left: 100px;
+.ingredientes li button:hover {
+  background-color: var(--darker-purple);
+  color: white;
+}
+
+.anade-ingr {
+  display: flex;
+  justify-self: center;
+  margin-top: 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: var(--light-purple);
+  border: 2px solid var(--purple);
+  transition: 0.2s;
+}
+
+.anade-ingr:hover {
+  background-color: var(--purple);
+  color: white;
+  border: 2px solid var(--dark-purple);
+}
+
+.anade-ingr:active {
+  background-color: var(--dark-purple);
+  border: 2px solid var(--darker-purple);
+  color: lightgray;
+  transition: 0s;
 }
 
 /*PASOS DE LA RECETA*/
 .pasos {
   grid-area: pasos;
-  background-color: lightgreen;
+  background-color: var(--lighter-purple);
+  border: 2px var(--purple) solid;
+  border-radius: 20px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-self: self-start;
+  height: fit-content;
 }
 
 .paso {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 10px;
+  grid-template-areas:
+    "texto boton"
+    "imagen .";
 }
 
 .paso textarea {
+  grid-area: texto;
   width: 100%;
+  height: 32px;
   resize: none;
   padding: 5px;
   border-radius: 10px;
   line-height: 1.5;
+  box-sizing: border-box;
+}
+
+.paso button {
+  grid-area: boton;
+  border-radius: 100px;
+  border: 0;
+  background-color: var(--dark-purple);
+  color: white;
+  width: 25px;
+  height: 80%;
+  align-self: center;
+}
+
+.paso button:hover {
+  background-color: var(--darker-purple);
+  color: white;
+}
+
+.img-paso {
+  grid-area: imagen;
+  width: 23%;
+  text-align: center;
+  font-size: smaller;
+}
+
+.img-upload-paso {
+  border: 2px dashed var(--purple);
+  height: auto;
+  aspect-ratio: 12 / 9;
+  min-height: 120px;
+  border-radius: 20px;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--transparent-light-purple);
+  transition: 0.2s;
+  flex: 1;
+}
+
+.img-upload-paso:hover {
+  border: 2px dashed var(--dark-purple);
+}
+
+.img-upload-paso img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.anade-paso {
+  display: flex;
+  align-self: center;
+  width: 62px;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: var(--light-purple);
+  border: 2px solid var(--purple);
+  transition: 0.2s;
+}
+
+.anade-paso:hover {
+  background-color: var(--purple);
+  color: white;
+  border: 2px solid var(--dark-purple);
+}
+
+.anade-paso:active {
+  background-color: var(--dark-purple);
+  border: 2px solid var(--darker-purple);
+  color: lightgray;
+  transition: 0s;
 }
 
 /*BOTONES DEL FORMULARIO*/
 .btts-form {
   grid-area: btts-form;
-  background-color: lightsalmon;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto;
+  justify-self: center;
+  gap: 30px;
+}
+
+.btts-form input {
+  height: min-content;
+  padding: 15px 20px;
+  font-size: medium;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: var(--light-purple);
+  border: 2px solid var(--purple);
+  transition: 0.2s;
+  width: 7rem;
+}
+
+.btts-form input:hover {
+  background-color: var(--purple);
+  color: white;
+  border: 2px solid var(--dark-purple);
+}
+
+.btts-form input:active {
+  background-color: var(--dark-purple);
+  border: 2px solid var(--darker-purple);
+  color: lightgray;
+  transition: 0s;
 }

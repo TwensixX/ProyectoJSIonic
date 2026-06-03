@@ -1,11 +1,12 @@
 :root {
-  --dark-purple: #28003e;
+  --darker-purple: #27003a;
+  --dark-purple: #4d0073;
   --purple: #6700a8;
   --transparent-purple: #6700a8bb;
   --light-purple: #cc6dff;
   --transparent-light-purple: #cc6dffbb;
-  --lighter-purple: #f8ebff;
-  --transparent-lighter-purple: #f8ebffbb;
+  --lighter-purple: #edcaff;
+  --transparent-white-purple: #f8ebffbb;
 }
 
 * {

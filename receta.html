@@ -18,8 +18,8 @@
     <main>
       <form>
         <div class="img-receta">
-          <label class="image-upload">
-            <input type="file" id="imageInput" accept="image/*" />
+          <label class="img-upload">
+            <input type="file" id="imgInput" accept="image/*" />
             <span class="placeholder">Selecciona una imagen</span>
             <img id="preview" alt="Vista previa" />
           </label>
@@ -37,51 +37,31 @@
           ></textarea>
         </div>
         <div class="ingredientes">
-          <h3>Lista de ingredientes</h3>
-          <ul>
-            <li><input type="text"> <button><i class="fa-solid fa-minus"></i></button></li>
-            <li><input type="text"> <button><i class="fa-solid fa-minus"></i></button></li>
-            <li><input type="text"> <button><i class="fa-solid fa-minus"></i></button></li>
-          </ul>
-          <button class="aniade-ingr">Añadir</button>
+          <div>
+            <h3>Lista de ingredientes</h3>
+            <ul>
+              <li>
+                <input type="text" />
+                <button><i class="fa-solid fa-minus"></i></button>
+              </li>
+            </ul>
+            <button class="anade-ingr" id="anadeIngr">Añadir</button>
+          </div>
         </div>
         <div class="pasos">
           <h2>Pasos de la receta</h2>
           <div class="paso">
-            <textarea class="desc-paso"></textarea>
-            <div class="btts-receta">
-              <button id="anade"><i class="fa-solid fa-plus"></i></button>
-              <button id="quita"><i class="fa-solid fa-minus"></i></button>
+            <textarea placeholder="Freímos la cebolla ..."></textarea>
+            <button id="quitaPaso"><i class="fa-solid fa-minus"></i></button>
+            <div class="img-paso">
+              <label class="img-upload-paso">
+                <input type="file" id="imgInput" accept="image/*" />
+                <span class="placeholder">Selecciona una imagen del paso</span>
+                <img id="preview" alt="Vista previa" />
+              </label>
             </div>
           </div>
-          <div class="paso">
-            <textarea></textarea>
-            <div class="btts-receta">
-              <button id="anade"><i class="fa-solid fa-plus"></i></button>
-              <button id="quita"><i class="fa-solid fa-minus"></i></button>
-            </div>
-          </div>
-          <div class="paso">
-            <textarea class="desc-paso"></textarea>
-            <div class="btts-receta">
-              <button id="anade"><i class="fa-solid fa-plus"></i></button>
-              <button id="quita"><i class="fa-solid fa-minus"></i></button>
-            </div>
-          </div>
-          <div class="paso">
-            <textarea class="desc-paso"></textarea>
-            <div class="btts-receta">
-              <button id="anade"><i class="fa-solid fa-plus"></i></button>
-              <button id="quita"><i class="fa-solid fa-minus"></i></button>
-            </div>
-          </div>
-          <div class="paso">
-            <textarea class="desc-paso"></textarea>
-            <div class="btts-receta">
-              <button id="anade"><i class="fa-solid fa-plus"></i></button>
-              <button id="quita"><i class="fa-solid fa-minus"></i></button>
-            </div>
-          </div>
+          <button class="anade-paso" id="anadePaso">Añadir</button>
         </div>
         <div class="btts-form">
           <input type="submit" value="Guardar" />

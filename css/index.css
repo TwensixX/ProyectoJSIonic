@@ -30,11 +30,11 @@ a {
 .receta {
   display: grid;
   grid-template-areas: 
-  'img-receta desc-receta'
+  'img-receta titulo-receta'
   'img-receta desc-receta';
   grid-template-columns: minmax(100px, 150px) 1fr;
-  grid-template-rows: 50px 100px;
-  background-color: var(--transparent-lighter-purple);
+  grid-template-rows: 50px 95px;
+  background-color: var(--transparent-white-purple);
   padding: 10px;
   border: 2px solid var(--purple);
   border-radius: 10px;
@@ -50,21 +50,16 @@ a {
   border-radius: 10px;
 }
 
-.desc-receta {
-  grid-area: desc-receta;
-  padding: 10px;
-  align-content: center;
-}
-
-.desc-receta h2 {
+.receta h2 {
+  grid-area: titulo-receta;
   align-self: center;
   margin: 0;
+  height: min-content;
 }
 
-.desc-receta p {
+.receta p {
   margin: 0;
   max-height: 6em;
   overflow: hidden;
-  padding-top: 10px;
   color: var(--dark-purple);
 }
