@@ -51,6 +51,10 @@ form {
 
 .img-upload {
   border: 2px dashed var(--purple);
+  height: auto;
+  position: relative;
+  aspect-ratio: 12 / 9;
+  min-height: 120px;
   border-radius: 20px;
   cursor: pointer;
   overflow: hidden;
@@ -71,11 +75,15 @@ form {
   height: 100%;
   object-fit: cover;
   display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .placeholder {
   color: var(--dark-purple);
   font-family: sans-serif;
+  cursor: pointer;
 }
 
 input[type="file"] {
@@ -93,6 +101,7 @@ input[type="file"] {
 
 .info-receta input {
   width: 100%;
+  border: 2px solid var(--purple);
   padding: 5px;
   font-size: larger;
   border-radius: 10px;
@@ -100,6 +109,7 @@ input[type="file"] {
 
 .info-receta textarea {
   width: 100%;
+  border: 2px solid var(--purple);
   resize: none;
   padding: 5px;
   border-radius: 10px;
@@ -112,10 +122,8 @@ input[type="file"] {
 .ingredientes {
   grid-area: ingr;
   padding: 20px;
+  margin: 10px;
   height: fit-content;
-}
-
-.ingredientes div {
   border: 2px dotted var(--purple);
   padding: 20px;
   border-radius: 20px;
@@ -138,6 +146,11 @@ input[type="file"] {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.ingredientes li input {
+  border: 1px solid var(--purple);
+  border-radius: 5px;
 }
 
 li::before {
@@ -189,6 +202,7 @@ li::before {
 .pasos {
   grid-area: pasos;
   background-color: var(--lighter-purple);
+  margin: 10px;
   border: 2px var(--purple) solid;
   border-radius: 20px;
   padding: 20px;
@@ -211,6 +225,7 @@ li::before {
 
 .paso textarea {
   grid-area: texto;
+  border: 1px solid var(--purple);
   width: 100%;
   height: 32px;
   resize: none;
@@ -241,33 +256,6 @@ li::before {
   width: 23%;
   text-align: center;
   font-size: smaller;
-}
-
-.img-upload-paso {
-  border: 2px dashed var(--purple);
-  height: auto;
-  aspect-ratio: 12 / 9;
-  min-height: 120px;
-  border-radius: 20px;
-  cursor: pointer;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--transparent-light-purple);
-  transition: 0.2s;
-  flex: 1;
-}
-
-.img-upload-paso:hover {
-  border: 2px dashed var(--dark-purple);
-}
-
-.img-upload-paso img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: none;
 }
 
 input[type="file"] {
@@ -306,15 +294,16 @@ input[type="file"] {
   grid-template-columns: auto auto auto;
   grid-template-rows: auto;
   justify-self: center;
+  align-self: center;
   gap: 30px;
 }
 
 .btts-form input {
   height: min-content;
-  padding: 15px 20px;
+  padding: 15px 0;
   font-size: medium;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 30px;
   background-color: var(--light-purple);
   border: 2px solid var(--purple);
   transition: 0.2s;

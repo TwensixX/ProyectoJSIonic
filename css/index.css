@@ -38,6 +38,12 @@ a {
   padding: 10px;
   border: 2px solid var(--purple);
   border-radius: 10px;
+  box-shadow: 1px 1px 10px black;
+  transition: 0.5s;
+}
+
+.receta:hover {
+  box-shadow: 1px 1px 20px;
 }
 
 .receta img {
@@ -62,4 +68,8 @@ a {
   max-height: 6em;
   overflow: hidden;
   color: var(--dark-purple);
+}
+
+.oculto {
+  display: none;
 }

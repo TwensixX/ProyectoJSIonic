@@ -9,6 +9,10 @@
   --transparent-white-purple: #f8ebffbb;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 * {
   font-family: sans-serif;
 }

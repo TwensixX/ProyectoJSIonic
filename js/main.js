@@ -1,6 +1,7 @@
-import { ponerTituloReceta } from "./utils/principal";
-import { recetas } from "./data/recetas";
+if (document.querySelector("#listaRecetas")) {
+  import("./pages/index.js");
+}
 
-for (const receta of recetas) {
-    ponerTituloReceta(receta);
+if (document.querySelector("#formReceta")) {
+  import("./pages/nueva-receta.js");
 }
