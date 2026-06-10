@@ -1,63 +1,90 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nueva receta</title>
+    <link rel="stylesheet" href="./css/global.css " />
+    <link rel="stylesheet" href="./css/pages/nueva-receta.css" />
+    <script
+      src="https://kit.fontawesome.com/d189544426.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nueva receta</title>
-  <link rel="stylesheet" href="./css/global.css " />
-  <link rel="stylesheet" href="./css/pages/receta.css" />
-  <script src="https://kit.fontawesome.com/d189544426.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-  <header>
-    <h1>Crea tu receta</h1>
-  </header>
-  <main>
-    <form id="formReceta">
-      <div class="img-receta">
-        <label class="img-upload">
-          <input type="file" class="imgInput" accept="image/*" />
-          <span class="placeholder">Selecciona una imagen</span>
-          <img class="preview" alt="Vista previa" />
-        </label>
-      </div>
-      <div class="info-receta">
-        <input type="text" class="titulo-receta" placeholder="Título de la receta" />
-        <textarea type="text" class="desc-receta" placeholder="Descripción de la receta"></textarea>
-      </div>
-      <div class="ingredientes" id="listaIngredientes">
-        <h3>Lista de ingredientes</h3>
-        <ul>
-          <li>
-            <input type="text" name="ingredientes[]">
-          </li>
-        </ul>
-        <input type="button" value="Añadir" class="anade-ingr" id="anadeIngr"/>
-      </div>
-      <div class="pasos" id="listaPasos">
-        <h2>Pasos de la receta</h2>
-        <div class="paso">
-          <textarea placeholder="Freímos la cebolla ..."></textarea>
-          <div class="img-paso">
-            <label class="img-upload">
-              <input type="file" class="imgInput" accept="image/*" />
-              <span class="placeholder">Selecciona una imagen del paso</span>
-              <img class="preview" alt="Vista previa" />
-            </label>
-          </div>
+  <body>
+    <header>
+      <h1>Crea tu receta</h1>
+    </header>
+    <main>
+      <form id="formReceta" action="index.html">
+        <div class="img-receta">
+          <label class="img-upload">
+            <input type="file" class="imgInput" accept="image/*" />
+            <span class="placeholder">Selecciona una imagen</span>
+            <img class="preview" alt="Vista previa" />
+          </label>
         </div>
-        <input value="Añadir" type="button" class="anade-paso" id="anadePaso"/>
-      </div>
-      <div class="btts-form">
-        <input type="submit" value="Guardar" />
-        <input type="reset" value="Limpiar" />
-        <input type="button" value="Volver" />
-      </div>
-    </form>
-  </main>
-  <script type="module" src="js/main.js"></script>
-</body>
-
+        <div class="info-receta">
+          <input
+            type="text"
+            class="titulo-receta"
+            placeholder="Título de la receta"
+            maxlength="100"
+            required />
+          <textarea
+            type="text"
+            class="desc-receta"
+            id="descReceta"
+            placeholder="Descripción de la receta"
+            maxlength="1500"
+          ></textarea>
+          <p class="counter" id="counter">0 / 1500</p>
+        </div>
+        <div class="ingredientes" id="listaIngredientes">
+          <h3>Lista de ingredientes</h3>
+          <ul>
+            <li>
+              <input type="text" name="ingredientes[]" maxlength="40" />
+            </li>
+          </ul>
+          <input
+            type="button"
+            value="Añadir"
+            class="anade-ingr"
+            id="anadeIngr"
+          />
+        </div>
+        <div class="pasos" id="listaPasos">
+          <h2>Pasos de la receta</h2>
+          <div class="paso">
+            <textarea
+              class="desc-paso"
+              placeholder="Freímos la cebolla ..."
+              maxlength="2000"
+            ></textarea>
+            <p class="counter">0 / 2000</p>
+            <div class="img-paso">
+              <label class="img-upload">
+                <input type="file" class="imgInput" accept="image/*" />
+                <span class="placeholder">Selecciona una imagen del paso</span>
+                <img class="preview" alt="Vista previa" />
+              </label>
+            </div>
+          </div>
+          <input
+            value="Añadir"
+            type="button"
+            class="anade-paso"
+            id="anadePaso"
+          />
+        </div>
+        <div class="btts-form">
+          <input type="submit" value="Guardar" />
+          <a href="./index.html">Volver</a>
+        </div>
+      </form>
+    </main>
+    <script type="module" src="js/main.js"></script>
+  </body>
 </html>

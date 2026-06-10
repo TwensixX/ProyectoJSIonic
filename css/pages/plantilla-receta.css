@@ -1,0 +1,214 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  width: 80%;
+  padding: 1% 0;
+  min-height: 100vh;
+}
+
+header {
+  background-color: var(--transparent-white-purple);
+  flex: 0 0 auto;
+  border: 2px solid var(--transparent-purple);
+  border-bottom: 2px dashed var(--transparent-purple);
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  padding: 20px;
+}
+main {
+  background-color: var(--transparent-white-purple);
+  display: flex;
+  flex: 1;
+  border: 2px solid var(--transparent-purple);
+  border-top: 2px dashed var(--transparent-purple);
+  border-radius: 0 0 10px 10px;
+}
+
+form {
+  display: grid;
+  flex: 1;
+  grid-template-areas:
+    "img info"
+    "ingr pasos"
+    "btts-form btts-form";
+  gap: 15px;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto auto auto;
+  padding: 10px;
+}
+
+/*IMAGEN RECETA*/
+.img-receta {
+  grid-area: img;
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+}
+
+.img-receta img {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed var(--transparent-purple);
+  border-radius: 20px;
+}
+
+/*INFO DE LA RECETA*/
+.info-receta {
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.titulo-receta {
+  width: 100%;
+  border: 2px solid var(--purple);
+  background-color: white;
+  font-weight: normal;
+  padding: 5px;
+  font-size: larger;
+  border-radius: 10px;
+}
+
+.desc-receta {
+  width: 100%;
+  background-color: white;
+  border: 2px solid var(--purple);
+  resize: none;
+  padding: 5px;
+  border-radius: 10px;
+  height: 100%;
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+/*INGREDIENTES*/
+.ingredientes {
+  grid-area: ingr;
+  padding: 20px;
+  margin: 10px;
+  height: fit-content;
+  border: 2px dotted var(--purple);
+  padding: 20px;
+  border-radius: 20px;
+  background-color: var(--lighter-purple);
+}
+
+.ingredientes h3 {
+  margin-bottom: 15px;
+}
+
+.ingredientes ul {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-left: 20px;
+}
+
+.ingredientes li {
+  list-style: disc;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+li::before {
+  content: "•";
+  font-size: larger;
+  flex-shrink: 0;
+}
+/*PASOS DE LA RECETA*/
+.pasos {
+  grid-area: pasos;
+  background-color: var(--lighter-purple);
+  margin: 10px;
+  border: 2px var(--purple) solid;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-self: self-start;
+  height: fit-content;
+}
+
+.paso {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 10px;
+  grid-template-areas:
+    "texto boton"
+    "contador ."
+    "imagen .";
+  margin-bottom: 40px;
+}
+
+.paso p {
+  grid-area: texto;
+  background-color: white;
+  border: 1px solid var(--purple);
+  width: 100%;
+  resize: none;
+  padding: 5px;
+  border-radius: 10px;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+.img-paso {
+  grid-area: imagen;
+  width: 23%;
+  text-align: center;
+  font-size: smaller;
+}
+
+.img-paso img {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed var(--transparent-purple);
+  border-radius: 20px;
+}
+
+/*BOTONES DEL FORMULARIO*/
+.btts-form {
+  grid-area: btts-form;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto;
+  justify-self: center;
+  align-self: center;
+  gap: 30px;
+}
+
+.btts-form a {
+  height: min-content;
+  padding: 15px 0;
+  font-size: medium;
+  font-weight: bold;
+  border-radius: 30px;
+  background-color: var(--light-purple);
+  border: 2px solid var(--purple);
+  transition: 0.2s;
+  width: 7rem;
+  text-align: center;
+}
+
+.btts-form a:hover {
+  background-color: var(--purple);
+  color: white;
+  border: 2px solid var(--dark-purple);
+}
+
+.btts-form a:active {
+  background-color: var(--dark-purple);
+  border: 2px solid var(--darker-purple);
+  color: lightgray;
+  transition: 0s;
+}
