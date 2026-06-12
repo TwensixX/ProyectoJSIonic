@@ -6,7 +6,7 @@ export function crearInputIngrediente() {
 
   const creaInputTexto = document.createElement("input");
   creaInputTexto.type = "text";
-  creaInputTexto.name = "ingredientes[]"
+  creaInputTexto.classList.add("ingrediente");
   creaInputTexto.maxLength = 40;
 
   const creaBoton = document.createElement("button");
