@@ -2,6 +2,8 @@ import { crearInputIngrediente } from "../components/input-ingrediente.js";
 import { crearBloquePaso } from "../components/bloque-paso.js";
 import { initImagePreviews } from "../utils/img-preview.js";
 import { contadorTextArea } from "../utils/textarea-counter.js";
+import { recogerDatosReceta } from "../utils/datosForm.js";
+import { guardarReceta } from "../data/storage.js";
 
 /* CREAR INPUT INGREDIENTE */
 const bttnAnadeIngr = document.getElementById("anadeIngr");
@@ -16,3 +18,17 @@ initImagePreviews();
 
 /* CONTADOR TEXTAREA */
 contadorTextArea();
+
+
+/*  */
+const form = document.querySelector("#formReceta");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const receta = await recogerDatosReceta(form);
+
+  guardarReceta(receta);
+
+  alert("Receta guardada correctamente");
+});

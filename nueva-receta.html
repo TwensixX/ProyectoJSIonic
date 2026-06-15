@@ -20,7 +20,7 @@
       <form id="formReceta" action="index.html">
         <div class="img-receta">
           <label class="img-upload">
-            <input type="file" class="imgInput" accept="image/*" />
+            <input type="file" class="imgInput" name="imagen" accept="image/*" />
             <span class="placeholder">Selecciona una imagen</span>
             <img class="preview" alt="Vista previa" />
           </label>
@@ -45,7 +45,7 @@
           <h3>Lista de ingredientes</h3>
           <ul>
             <li>
-              <input type="text" class="ingrediente" maxlength="40" />
+              <input type="text" name="ingredientes[]" maxlength="40" />
             </li>
           </ul>
           <input
@@ -60,13 +60,14 @@
           <div class="paso">
             <textarea
               class="desc-paso"
+              name="descPaso"
               placeholder="Freímos la cebolla ..."
               maxlength="2000"
             ></textarea>
             <p class="counter">0 / 2000</p>
             <div class="img-paso">
               <label class="img-upload">
-                <input type="file" class="imgInput" accept="image/*" />
+                <input type="file" class="imgInput" name="imgPaso" accept="image/*" />
                 <span class="placeholder">Selecciona una imagen del paso</span>
                 <img class="preview" alt="Vista previa" />
               </label>

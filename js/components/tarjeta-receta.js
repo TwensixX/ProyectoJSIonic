@@ -2,20 +2,24 @@
 export function crearBloqueReceta(recetas) {
     const listaRecetas = document.getElementById("listaRecetas");
 
-    const creaTarjeta = document.createElement("a");
-    creaTarjeta.classList.add("receta");
-    creaReceta.href = `./plantilla-receta.html?id=${recetas.id}`;
+    const creaReceta = document.createElement("a");
+    creaReceta.classList.add("receta");
+    creaReceta.href = "./plantilla-receta.html";
+
+    listaRecetas.append(creaReceta);
 
     const ponImagen = document.createElement("img");
     ponImagen.src = recetas.imagen;
     ponImagen.alt = recetas.titulo;
-
+    ponImagen.name = "imagen";
+    
     const ponTitulo = document.createElement("h2");
     ponTitulo.textContent = recetas.titulo;
-
+    ponTitulo.name = "titulo";
+    
     const ponDesc = document.createElement("p");
     ponDesc.textContent = recetas.descripcion;
+    ponDesc.name = "desc";
 
-    creaTarjeta.append(ponImagen, ponTitulo, ponDesc);
-    listaRecetas.append(creaTarjeta);
+    creaReceta.append(ponImagen, ponTitulo, ponDesc);
 }
