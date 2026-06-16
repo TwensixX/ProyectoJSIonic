@@ -10,6 +10,7 @@ export function crearBloquePaso() {
   const creaTextArea = document.createElement("textarea");
   creaTextArea.classList.add("desc-paso");
   creaTextArea.maxLength = 2000;
+  creaTextArea.name = ("descPaso");
 
   const creaBoton = document.createElement("button");
   creaBoton.type = "button";
@@ -29,7 +30,7 @@ export function crearBloquePaso() {
 
   const creaImgPaso = document.createElement("div");
   creaImgPaso.classList.add("img-paso");
-
+  
   const creaLabelImg = document.createElement("label");
   creaLabelImg.classList.add("img-upload");
 
@@ -37,6 +38,7 @@ export function crearBloquePaso() {
   creaInputImg.type = "file";
   creaInputImg.classList.add("imgInput");
   creaInputImg.accept = "image/*";
+  creaInputImg.name = ("imgPaso");
 
   const creaSpanImg = document.createElement("span");
   creaSpanImg.classList.add("placeholder");

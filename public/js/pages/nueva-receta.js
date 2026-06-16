@@ -2,16 +2,17 @@ import { crearInputIngrediente } from "../components/input-ingrediente.js";
 import { crearBloquePaso } from "../components/bloque-paso.js";
 import { initImagePreviews } from "../utils/img-preview.js";
 import { contadorTextArea } from "../utils/textarea-counter.js";
-import { recogerDatosReceta } from "../utils/datosForm.js";
-import { guardarReceta } from "../data/storage.js";
+import { obtenerDatosFormulario } from "../utils/datosForm.js";
+import { guardarReceta } from "../services/indexedDB.js";
+import { enviarReceta } from "../services/api-recetas.js";
 
 /* CREAR INPUT INGREDIENTE */
 const bttnAnadeIngr = document.getElementById("anadeIngr");
-bttnAnadeIngr.addEventListener('click', crearInputIngrediente);
+bttnAnadeIngr.addEventListener("click", crearInputIngrediente);
 
 /* CREAR BLOQUE PASO */
 const bttnAnadePaso = document.getElementById("anadePaso");
-bttnAnadePaso.addEventListener('click', crearBloquePaso);
+bttnAnadePaso.addEventListener("click", crearBloquePaso);
 
 /* PREVIEW IMAGEN */
 initImagePreviews();
@@ -19,16 +20,19 @@ initImagePreviews();
 /* CONTADOR TEXTAREA */
 contadorTextArea();
 
-
 /*  */
 const form = document.querySelector("#formReceta");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const receta = await recogerDatosReceta(form);
+  try {
+    const data = await enviarReceta();
 
-  guardarReceta(receta);
+    console.log("Receta guardada:", data);
 
-  alert("Receta guardada correctamente");
+    form.reset();
+  } catch (err) {
+    console.error(err);
+  }
 });
