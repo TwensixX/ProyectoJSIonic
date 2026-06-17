@@ -1,30 +1,43 @@
-import { obtenerDatosFormulario } from "../utils/datosForm.js";
+import { transformarBase64 } from "../utils/fileToBase64.js";
 
-export async function enviarReceta() {
-  const receta = obtenerDatosFormulario();
+export async function prepararReceta(receta) {
+  const imagen = await transformarBase64(receta.imagen);
 
-  const formData = new FormData();
+  const pasos = await Promise.all(
+    receta.pasos.map(async (p) => ({
+      descripcion: p.descripcion,
+      imagen: p.imagen ? await transformarBase64(p.imagen) : null
+    }))
+  );
 
-  // JSON principal
-  formData.append("data", JSON.stringify(receta));
+  return {
+    ...receta,
+    imagen,
+    pasos
+  };
+}
 
-  // imagen principal
-  formData.append("imagen", receta.imagen);
-
-  // imágenes de pasos
-  receta.pasos.forEach((paso, i) => {
-    if (paso.imagen) {
-      formData.append(`paso-${i}`, paso.imagen);
-    }
-  });
-
-  const res = await fetch("/api/recetas", {
+export async function enviarReceta(receta) {
+  const response = await fetch("/api/recetas", {
     method: "POST",
-    body: formData
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(receta)
   });
+
+  if (!response.ok) {
+    throw new Error("Error al enviar la receta");
+  }
+
+  return response.json();
+}
+
+export async function obtenerRecetas() {
+  const res = await fetch("/api/recetas");
 
   if (!res.ok) {
-    throw new Error("Error al enviar la receta");
+    throw new Error("Error al obtener recetas");
   }
 
   return await res.json();

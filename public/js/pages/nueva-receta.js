@@ -3,8 +3,7 @@ import { crearBloquePaso } from "../components/bloque-paso.js";
 import { initImagePreviews } from "../utils/img-preview.js";
 import { contadorTextArea } from "../utils/textarea-counter.js";
 import { obtenerDatosFormulario } from "../utils/datosForm.js";
-import { guardarReceta } from "../services/indexedDB.js";
-import { enviarReceta } from "../services/api-recetas.js";
+import { prepararReceta, enviarReceta } from "../services/api-recetas.js";
 
 /* CREAR INPUT INGREDIENTE */
 const bttnAnadeIngr = document.getElementById("anadeIngr");
@@ -20,19 +19,17 @@ initImagePreviews();
 /* CONTADOR TEXTAREA */
 contadorTextArea();
 
-/*  */
+/* GUARDAR RECETAS */
 const form = document.querySelector("#formReceta");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  try {
-    const data = await enviarReceta();
+  const receta = obtenerDatosFormulario();
 
-    console.log("Receta guardada:", data);
+  const recetaPreparada = await prepararReceta(receta);
 
-    form.reset();
-  } catch (err) {
-    console.error(err);
-  }
+  await enviarReceta(recetaPreparada);
+
+  console.log("Receta enviada al servidor");
 });
