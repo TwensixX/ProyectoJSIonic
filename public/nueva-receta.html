@@ -20,7 +20,12 @@
       <form id="formReceta" action="index.html">
         <div class="img-receta">
           <label class="img-upload">
-            <input type="file" class="imgInput" name="imagen" accept="image/*" />
+            <input
+              type="file"
+              class="imgInput"
+              name="imagen"
+              accept="image/*"
+            />
             <span class="placeholder">Selecciona una imagen</span>
             <img class="preview" alt="Vista previa" />
           </label>
@@ -29,16 +34,18 @@
           <input
             type="text"
             class="titulo-receta"
-            id="tituloReceta"
+            id="tituloRecetaInput"
             placeholder="Título de la receta"
             maxlength="100"
-            required />
+            required
+          />
           <textarea
             type="text"
             class="desc-receta"
-            id="descReceta"
+            id="descRecetaInput"
             placeholder="Descripción de la receta"
             maxlength="1500"
+            required
           ></textarea>
           <p class="counter" id="counter">0 / 1500</p>
         </div>
@@ -46,7 +53,12 @@
           <h3>Lista de ingredientes</h3>
           <ul>
             <li>
-              <input type="text" class="ingrediente" name="ingredientes[]" maxlength="40" />
+              <input
+                type="text"
+                class="ingrediente"
+                name="ingredientes[]"
+                maxlength="40"
+              />
             </li>
           </ul>
           <input
@@ -61,14 +73,19 @@
           <div class="paso">
             <textarea
               class="desc-paso"
-              name="descPaso"
+              name="descPasoInput"
               placeholder="Freímos la cebolla ..."
               maxlength="2000"
             ></textarea>
             <p class="counter">0 / 2000</p>
             <div class="img-paso">
               <label class="img-upload">
-                <input type="file" class="imgInput" name="imgPaso" accept="image/*" />
+                <input
+                  type="file"
+                  class="imgInput"
+                  name="imgPasoInput"
+                  accept="image/*"
+                />
                 <span class="placeholder">Selecciona una imagen del paso</span>
                 <img class="preview" alt="Vista previa" />
               </label>

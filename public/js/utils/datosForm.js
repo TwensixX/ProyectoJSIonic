@@ -3,9 +3,9 @@ import { Receta } from "../models/receta.js";
 export function obtenerDatosFormulario() {
   const imagen = document.querySelector(".imgInput").files[0];
 
-  const titulo = document.getElementById("tituloReceta").value;
+  const titulo = document.getElementById("tituloRecetaInput").value;
 
-  const descripcion = document.getElementById("descReceta").value;
+  const descripcion = document.getElementById("descRecetaInput").value;
 
   const ingredientes = [...document.querySelectorAll('[name="ingredientes[]"]')]
     .map(input => input.value.trim())
@@ -13,8 +13,8 @@ export function obtenerDatosFormulario() {
 
   const pasos = [...document.querySelectorAll(".paso")]
     .map(paso => {
-      const img = paso.querySelector('[name="imgPaso"]')?.files[0] || null;
-      const desc = paso.querySelector('[name="descPaso"]')?.value.trim() || "";
+      const img = paso.querySelector('[name="imgPasoInput"]')?.files[0] || null;
+      const desc = paso.querySelector('[name="descPasoInput"]')?.value.trim() || "";
 
       return {
         descripcion: desc,

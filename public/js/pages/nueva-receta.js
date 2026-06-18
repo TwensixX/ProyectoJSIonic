@@ -31,5 +31,7 @@ form.addEventListener("submit", async (e) => {
 
   await enviarReceta(recetaPreparada);
 
+  window.location.href = "../../plantilla-receta.html"
+
   console.log("Receta enviada al servidor");
 });

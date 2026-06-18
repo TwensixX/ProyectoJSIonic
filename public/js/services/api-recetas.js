@@ -42,3 +42,25 @@ export async function obtenerRecetas() {
 
   return await res.json();
 }
+
+export async function obtenerRecetaPorId(id) {
+  const res = await fetch(`/api/recetas/${id}`);
+
+  if (!res.ok) {
+    throw new Error("Error al obtener la receta por id");
+  }
+
+  return await res.json();
+}
+
+export async function borrarReceta(id) {
+  const res = await fetch(`/api/recetas/${id}`, {
+    method: "DELETE"
+  });
+
+  if (!res.ok) {
+    throw new Error("Error al borrar la receta");
+  }
+
+  return await res.json();
+}

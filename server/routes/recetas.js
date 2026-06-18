@@ -48,4 +48,70 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // receta principal
+    const [recetas] = await db.query(
+      "SELECT * FROM recetas WHERE id = ?",
+      [id]
+    );
+
+    if (recetas.length === 0) {
+      return res.status(404).json({ error: "Receta no encontrada" });
+    }
+
+    const receta = recetas[0];
+
+    // ingredientes
+    const [ingredientes] = await db.query(
+      "SELECT nombre FROM ingredientes WHERE receta_id = ?",
+      [id]
+    );
+
+    // pasos
+    const [pasos] = await db.query(
+      "SELECT descripcion, imagen FROM pasos WHERE receta_id = ?",
+      [id]
+    );
+
+    res.json({
+      ...receta,
+      ingredientes: ingredientes.map(i => i.nombre),
+      pasos
+    });
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await db.query(
+      "DELETE FROM ingredientes WHERE receta_id = ?",
+      [id]
+    );
+
+    await db.query(
+      "DELETE FROM pasos WHERE receta_id = ?",
+      [id]
+    );
+
+    await db.query(
+      "DELETE FROM recetas WHERE id = ?",
+      [id]
+    );
+
+    res.json({ ok: true });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 export default router;
