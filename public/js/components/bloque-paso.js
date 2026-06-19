@@ -1,7 +1,7 @@
 import { contadorTextArea } from "../utils/textarea-counter.js";
 
 //Crea un bloque para cada paso de la receta
-export function crearBloquePaso() {
+export function crearBloquePaso(paso = null) {
   const listaPasos = document.getElementById("listaPasos");
 
   const creaDiv = document.createElement("div");
@@ -10,7 +10,7 @@ export function crearBloquePaso() {
   const creaTextArea = document.createElement("textarea");
   creaTextArea.classList.add("desc-paso");
   creaTextArea.maxLength = 2000;
-  creaTextArea.name = ("descPaso");
+  creaTextArea.name = ("descPasoInput");
 
   const creaBoton = document.createElement("button");
   creaBoton.type = "button";
@@ -38,7 +38,7 @@ export function crearBloquePaso() {
   creaInputImg.type = "file";
   creaInputImg.classList.add("imgInput");
   creaInputImg.accept = "image/*";
-  creaInputImg.name = ("imgPaso");
+  creaInputImg.name = ("imgPasoInput");
 
   const creaSpanImg = document.createElement("span");
   creaSpanImg.classList.add("placeholder");
@@ -47,6 +47,15 @@ export function crearBloquePaso() {
   const creaImg = document.createElement("img");
   creaImg.classList.add("preview");
   creaImg.alt = "Vista previa";
+
+  if (paso) {
+  creaTextArea.value = paso.descripcion || "";
+
+  if (paso.imagen) {
+    creaImg.src = paso.imagen;
+    creaSpanImg.style.display = "none";
+  }
+}
 
   creaLabelImg.append(creaInputImg, creaSpanImg, creaImg);
   creaImgPaso.appendChild(creaLabelImg);

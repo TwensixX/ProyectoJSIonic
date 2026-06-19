@@ -1,6 +1,6 @@
 /* Cuenta los caracteres del textarea */
 export function contadorTextArea() {
-  const textAreaReceta = document.getElementById("descReceta");
+  const textAreaReceta = document.getElementById("descRecetaInput");
   const counter = document.getElementById("counter");
   const maxReceta = textAreaReceta.maxLength;
 

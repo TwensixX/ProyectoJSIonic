@@ -1,23 +1,29 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio</title>
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inicio</title>
-  <link rel="stylesheet" href="./css/global.css" />
-  <link rel="stylesheet" href="./css/index.css" />
-</head>
-
-<body>
-  <header>
-    <h1>Bienvenido a tu recetario</h1>
-  </header>
-  <main>
-    <input type="text" id="buscador" class="buscador" placeholder="Buscar receta..." />
-    <a href="./nueva-receta.html" class="btn-crea-receta" id="btnCreaReceta">Crea una receta</a>
-    <div class="lista-recetas" id="listaRecetas"></div>
-  </main>
-  <script type="module" src="js/main.js"></script>
-</body>
+  <body>
+    <header>
+      <h1>Bienvenido a tu recetario</h1>
+    </header>
+    <main>
+      <input
+        type="text"
+        id="buscador"
+        class="buscador"
+        placeholder="Buscar receta..."
+      />
+      <a href="./nueva-receta.html" class="btn-crea-receta" id="btnCreaReceta"
+        >Crea una receta</a
+      >
+      <div class="lista-recetas" id="listaRecetas"></div>
+    </main>
+    <script type="module" src="js/main.js"></script>
+  </body>
 </html>

@@ -29,7 +29,7 @@ main {
   border-radius: 0 0 10px 10px;
 }
 
-form {
+.vista-receta {
   display: grid;
   flex: 1;
   grid-template-areas:
@@ -66,16 +66,6 @@ form {
   padding: 10px;
 }
 
-.titulo-receta {
-  width: 100%;
-  border: 2px solid var(--purple);
-  background-color: white;
-  font-weight: normal;
-  padding: 5px;
-  font-size: larger;
-  border-radius: 10px;
-}
-
 .desc-receta {
   width: 100%;
   background-color: white;
@@ -83,7 +73,7 @@ form {
   resize: none;
   padding: 5px;
   border-radius: 10px;
-  height: 100%;
+  height: fit-content;
   line-height: 1.5;
   word-break: break-all;
 }
@@ -118,7 +108,7 @@ form {
   gap: 8px;
 }
 
-li::before {
+.ingredientes li::before {
   content: "•";
   font-size: larger;
   flex-shrink: 0;
@@ -138,20 +128,15 @@ li::before {
   height: fit-content;
 }
 
-.paso {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto auto;
-  gap: 10px;
-  grid-template-areas:
-    "texto boton"
-    "contador ."
-    "imagen .";
-  margin-bottom: 40px;
+.pasos ol {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-left: 20px;
+  margin-top: 0;
 }
 
 .paso p {
-  grid-area: texto;
   background-color: white;
   border: 1px solid var(--purple);
   width: 100%;
@@ -160,13 +145,11 @@ li::before {
   border-radius: 10px;
   line-height: 1.5;
   box-sizing: border-box;
+  margin-bottom: 10px;
 }
 
 .img-paso {
-  grid-area: imagen;
   width: 23%;
-  text-align: center;
-  font-size: smaller;
 }
 
 .img-paso img {
