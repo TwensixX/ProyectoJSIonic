@@ -3,7 +3,7 @@ if (document.querySelector("#listaRecetas")) {
 }
 
 if (document.querySelector("#formReceta")) {
-  import("./pages/nueva-receta.js");
+  import("./pages/form-receta.js");
 }
 
 if (document.querySelector("#vistaReceta")) {

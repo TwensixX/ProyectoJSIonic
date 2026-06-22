@@ -2,8 +2,16 @@ import { crearInputIngrediente } from "../components/input-ingrediente.js";
 import { crearBloquePaso } from "../components/bloque-paso.js";
 import { initImagePreviews } from "../utils/img-preview.js";
 import { contadorTextArea } from "../utils/textarea-counter.js";
-import { obtenerDatosFormulario, pintarFormulario } from "../utils/datosForm.js";
-import { prepararReceta, enviarReceta, obtenerRecetaPorId } from "../services/api-recetas.js";
+import {
+  obtenerDatosFormulario,
+  rellenarFormulario,
+} from "../utils/datosForm.js";
+import {
+  prepararReceta,
+  enviarReceta,
+  obtenerRecetaPorId,
+  actualizarReceta,
+} from "../services/api-recetas.js";
 import { obtenerIdReceta } from "../utils/url-receta.js";
 
 /* CREAR INPUT INGREDIENTE */
@@ -20,31 +28,32 @@ initImagePreviews();
 /* CONTADOR TEXTAREA */
 contadorTextArea();
 
-/* GUARDAR RECETAS */
+/* GUARDAR/EDITAR RECETAS */
 const form = document.querySelector("#formReceta");
 
 form.addEventListener("submit", async (e) => {
-  e.preventDefault();
 
-  const receta = obtenerDatosFormulario();
+    e.preventDefault();
 
-  const recetaPreparada = await prepararReceta(receta);
+    const receta =
+        await obtenerDatosFormulario();
 
-  await enviarReceta(recetaPreparada);
+    const id =
+        obtenerIdReceta();
 
-  window.location.href = "../../plantilla-receta.html"
+    if (id) {
 
-  console.log("Receta enviada al servidor");
+        await actualizarReceta(id, receta);
+
+        window.location.href =
+            `./plantilla-receta.html?id=${id}`;
+
+    } else {
+
+        await enviarReceta(receta);
+
+        window.location.href =
+            "./index.html";
+    }
+
 });
-
-/*  */
-const id = obtenerIdReceta();
-
-async function init() {
-  if (id) {
-    const receta = await obtenerRecetaPorId(id);
-    pintarFormulario(receta);
-  }
-}
-
-init();

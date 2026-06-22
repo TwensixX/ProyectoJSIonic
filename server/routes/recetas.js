@@ -7,11 +7,11 @@ const router = express.Router();
 /* INSERTAR DATOS DE LA BBDD */
 router.post("/", async (req, res) => {
   try {
-    const { titulo, descripcion, imagen, ingredientes, pasos } = req.body;
+    const { titulo, descripcion, imagen, categoria, ingredientes, pasos } = req.body;
 
     const [result] = await db.query(
-      "INSERT INTO recetas (titulo, descripcion, imagen) VALUES (?, ?, ?)",
-      [titulo, descripcion, imagen],
+      "INSERT INTO recetas (titulo, descripcion, imagen, categoria) VALUES (?, ?, ?, ?)",
+      [titulo, descripcion, imagen, categoria],
     );
 
     const recetaId = result.insertId;
@@ -84,38 +84,85 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+/* RECOGER RECETA POR CATEGORIA */
+router.get("/", async (req, res) => {
+  try {
+    const { categoria } = req.query;
+
+    let sql = "SELECT * FROM recetas";
+    let params = [];
+
+    if (categoria && categoria !== "todas") {
+      sql += " WHERE categoria = ?";
+      params.push(categoria);
+    }
+
+    const [recetas] = await db.query(sql, params);
+
+    res.json(recetas);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 /* ACTUALIZAR RECETAS */
 router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { titulo, descripcion, imagen, ingredientes, pasos } = req.body;
+
+    const {
+      titulo,
+      descripcion,
+      imagen,
+      categoria,
+      ingredientes,
+      pasos
+    } = req.body;
 
     await db.query(
-      "UPDATE recetas SET titulo=?, descripcion=?, imagen=? WHERE id=?",
-      [titulo, descripcion, imagen, id]
+      `
+      UPDATE recetas
+      SET titulo = ?, descripcion = ?, imagen = ?, categoria = ?
+      WHERE id = ?
+      `,
+      [titulo, descripcion, imagen, categoria, id]
     );
 
-    await db.query("DELETE FROM ingredientes WHERE receta_id=?", [id]);
-    await db.query("DELETE FROM pasos WHERE receta_id=?", [id]);
+    await db.query(
+      "DELETE FROM ingredientes WHERE receta_id = ?",
+      [id]
+    );
 
-    for (const ing of ingredientes) {
+    await db.query(
+      "DELETE FROM pasos WHERE receta_id = ?",
+      [id]
+    );
+
+    for (const ingrediente of ingredientes) {
       await db.query(
-        "INSERT INTO ingredientes (receta_id, nombre) VALUES (?, ?)",
-        [id, ing]
+        "INSERT INTO ingredientes(receta_id,nombre) VALUES (?,?)",
+        [id, ingrediente]
       );
     }
 
     for (const paso of pasos) {
       await db.query(
-        "INSERT INTO pasos (receta_id, descripcion, imagen) VALUES (?, ?, ?)",
-        [id, paso.descripcion, paso.imagen]
+        `
+        INSERT INTO pasos(receta_id,descripcion,imagen)
+        VALUES (?,?,?)
+        `,
+        [
+          id,
+          paso.descripcion,
+          paso.imagen
+        ]
       );
     }
 
     res.json({ ok: true });
 
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+  } catch (error) {
+    res.status(500).json({error});
   }
 });
 

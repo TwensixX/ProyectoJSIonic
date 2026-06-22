@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nueva receta</title>
     <link rel="stylesheet" href="./css/global.css " />
-    <link rel="stylesheet" href="./css/pages/nueva-receta.css" />
+    <link rel="stylesheet" href="./css/pages/form-receta.css" />
     <script
       src="https://kit.fontawesome.com/d189544426.js"
       crossorigin="anonymous"
@@ -14,7 +14,7 @@
 
   <body>
     <header>
-      <h1>Crea tu receta</h1>
+      <h1>Formulario receta</h1>
     </header>
     <main>
       <form id="formReceta" action="index.html">
@@ -51,6 +51,12 @@
         </div>
         <div class="ingredientes" id="listaIngredientes">
           <h3>Lista de ingredientes</h3>
+          <select name="categoria" class="categoria" id="categoria" required>
+            <option value="" disabled selected>Seleccionar categoría</option>
+            <option value="entrante">Entrante</option>
+            <option value="plato">Plato</option>
+            <option value="postre">Postre</option>
+          </select>
           <ul>
             <li>
               <input

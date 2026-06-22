@@ -9,6 +9,8 @@ export function obtenerDatosFormulario() {
 
   const descripcion = document.getElementById("descRecetaInput").value;
 
+  const categoria = document.getElementById("categoria").value;
+
   const ingredientes = [...document.querySelectorAll('[name="ingredientes[]"]')]
     .map((input) => input.value.trim())
     .filter((v) => v !== "");
@@ -18,7 +20,6 @@ export function obtenerDatosFormulario() {
       const img = paso.querySelector('[name="imgPasoInput"]')?.files[0] || null;
       const desc =
         paso.querySelector('[name="descPasoInput"]')?.value.trim() || "";
-
       return {
         descripcion: desc,
         imagen: img,
@@ -26,29 +27,35 @@ export function obtenerDatosFormulario() {
     })
     .filter((p) => p.descripcion !== "" || p.imagen !== null);
 
-  return new Receta(imagen, titulo, descripcion, ingredientes, pasos);
+  return new Receta(imagen, titulo, descripcion, categoria, ingredientes, pasos);
 }
 
-export function pintarFormulario(receta) {
-  document.querySelector(".titulo-receta").value = receta.titulo;
+export function rellenarFormulario(receta) {
+  document.querySelector("titulo-receta").value = receta.titulo;
+  document.querySelector("desc-receta").value = receta.descripcion;
 
-  document.querySelector(".desc-receta").value = receta.descripcion;
-
-  const preview = document.querySelector("#previewReceta");
-  if (preview && receta.imagen) {
-    preview.src = receta.imagen;
-  }
-
-  const contIng = document.querySelector("#listaIngredientes");
+  /* const contIng = document.getElementById("listaIngredientes");
   contIng.innerHTML = "";
 
-  
+  receta.ingredientes.forEach(i => {
+    const input = document.createElement("input");
+    input.name = "ingredientes[]";
+    input.value = i;
+    contIng.appendChild(input);
+  });
 
-  // PASOS
-  const contPasos = document.querySelector("#listaPasos");
+  const contPasos = document.getElementById("listaPasos");
   contPasos.innerHTML = "";
 
-  receta.pasos.forEach((paso) => {
-    crearBloquePaso(paso);
-  });
+  receta.pasos.forEach(p => {
+    const div = document.createElement("div");
+    div.classList.add("paso");
+
+    const textarea = document.createElement("textarea");
+    textarea.name = "descPaso";
+    textarea.value = p.descripcion;
+
+    div.appendChild(textarea);
+    contPasos.appendChild(div);
+  }); */
 }

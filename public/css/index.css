@@ -3,17 +3,28 @@ header {
   padding: 20px;
 }
 
-.buscador {
+.filtrar {
   display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.buscador {
   background-color: var(--lighter-purple);
   width: 100%;
   max-width: 60%;
-  justify-self: center;
   font-size: large;
   padding: 10px;
   border: 2px solid var(--purple);
   border-radius: 15px;
   outline: none;
+}
+
+.filtro-categoria {
+  border: 2px solid var(--purple);
+  border-radius: 15px;
+  outline: none;
+  font-weight: bold;
 }
 
 a {
@@ -85,19 +96,6 @@ a {
   justify-content: center;
 }
 
-.btn-crea-receta:hover {
-  background-color: var(--purple);
-  color: white;
-  border: 2px solid var(--dark-purple);
-}
-
-.btn-crea-receta:active {
-  background-color: var(--dark-purple);
-  border: 2px solid var(--darker-purple);
-  color: lightgray;
-  transition: 0s;
-}
-
 .btn-borra-receta {
   font-size: medium;
   font-weight: bold;
@@ -120,6 +118,29 @@ a {
   border: 2px solid var(--darker-purple);
   color: lightgray;
   transition: 0s;
+}
+
+.lista-recetas i {
+  align-self: center;
+  justify-self: end;
+  width: min-content;
+  pointer-events: none;
+  z-index: 999;
+  pointer-events: auto;
+  transition: 0.2s;
+  font-size: larger;
+}
+
+.lista-recetas i:hover {
+  color: darkgoldenrod;
+}
+
+.lista-recetas i:active {
+  font-size: medium;
+}
+
+.lista-recetas i.activo {
+  color: yellow;
 }
 
 .oculto {

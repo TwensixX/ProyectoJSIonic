@@ -41,7 +41,11 @@ export function crearBloqueReceta(recetas) {
     }
   });
 
-  creaReceta.append(ponImagen, ponTitulo, ponDesc, ponBoton);
+  const favIcon = document.createElement("i");
+  favIcon.classList.add("fa-regular", "fa-star");
+  favIcon.tabIndex = "0";
+
+  creaReceta.append(ponImagen, ponTitulo, ponDesc, ponBoton, favIcon);
 
   listaRecetas.appendChild(creaReceta);
 }

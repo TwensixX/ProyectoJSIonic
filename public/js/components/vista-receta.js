@@ -46,10 +46,10 @@ export function pintarRecetaCompleta(receta) {
 
   const btnEditar = document.createElement("a");
   btnEditar.textContent = "Editar";
-  btnEditar.href = `nueva-receta.html?id=${receta.id}`;
+  btnEditar.id = "editarReceta"
 
-  btnEditar.addEventListener("click", (e) => {
-    e.stopPropagation();
+  btnEditar.addEventListener("click", () => {
+    window.location.href = `./form-receta.html?id=${receta.id}`;
   });
 
   const btnVolver = document.createElement("a");
@@ -59,3 +59,4 @@ export function pintarRecetaCompleta(receta) {
   const bttsForm = document.querySelector(".btts-form");
   bttsForm.append(btnEditar, btnVolver);
 }
+
