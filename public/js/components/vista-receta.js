@@ -40,6 +40,7 @@ export function pintarRecetaCompleta(receta) {
             creaLi.removeChild(creaDivImg);
             creaLi.style.marginBottom = "0"
         }
+
         
 
         listaPasos.appendChild(creaLi);

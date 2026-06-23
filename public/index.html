@@ -17,20 +17,18 @@
       <h1>Bienvenido a tu recetario</h1>
     </header>
     <main>
-      <div class="filtrar">
-        <input
-          type="text"
-          id="buscador"
-          class="buscador"
-          placeholder="Buscar receta..."
-        />
-        <select name="filtroCategoria" class="filtro-categoria" id="filtroCategoria">
-          <option value="default" selected>Filtrar por categoría</option>
-          <option value="entrante">Entrante</option>
-          <option value="plato">Plato</option>
-          <option value="postre">Postre</option>
-        </select>
-      </div>
+      <input
+        type="text"
+        id="buscador"
+        class="buscador"
+        placeholder="Buscar receta..."
+      />
+      <select name="categoria" class="categoria" id="categoria">
+        <option value="default" selected>Filtra por categoría</option>
+        <option value="entrante">Entrante</option>
+        <option value="plato">Plato</option>
+        <option value="postre">Postre</option>
+      </select>
       <a href="./form-receta.html" class="btn-crea-receta" id="btnCreaReceta"
         >Crea una receta</a
       >

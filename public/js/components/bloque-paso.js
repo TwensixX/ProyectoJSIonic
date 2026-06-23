@@ -1,7 +1,7 @@
 import { contadorTextArea } from "../utils/textarea-counter.js";
 
 //Crea un bloque para cada paso de la receta
-export function crearBloquePaso(paso = null) {
+export function crearBloquePaso() {
   const listaPasos = document.getElementById("listaPasos");
 
   const creaDiv = document.createElement("div");
@@ -47,15 +47,6 @@ export function crearBloquePaso(paso = null) {
   const creaImg = document.createElement("img");
   creaImg.classList.add("preview");
   creaImg.alt = "Vista previa";
-
-  if (paso) {
-  creaTextArea.value = paso.descripcion || "";
-
-  if (paso.imagen) {
-    creaImg.src = paso.imagen;
-    creaSpanImg.style.display = "none";
-  }
-}
 
   creaLabelImg.append(creaInputImg, creaSpanImg, creaImg);
   creaImgPaso.appendChild(creaLabelImg);

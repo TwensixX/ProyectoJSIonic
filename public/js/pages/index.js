@@ -18,5 +18,3 @@ async function init() {
 init();
 
 iniciarBuscador();
-
-toggleEstrellaFav();

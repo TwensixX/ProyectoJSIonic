@@ -8,13 +8,12 @@ router.post("/", async (req, res) => {
   try {
     const { titulo, descripcion, imagen, ingredientes, pasos } = req.body;
 
-    // Bug 1 fix: tabla "receta", Bug 2 fix: sin id manual
     const [result] = await db.query(
       "INSERT INTO recetas (titulo, descripcion, imagen) VALUES (?, ?, ?)",
       [titulo, descripcion, imagen]
     );
 
-    const recetaId = result.insertId; // Bug 2 fix: id real de MySQL
+    const recetaId = result.insertId;
 
     for (const ingrediente of ingredientes || []) {
       await db.query(
@@ -52,7 +51,6 @@ router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
 
-    // receta principal
     const [recetas] = await db.query(
       "SELECT * FROM recetas WHERE id = ?",
       [id]
@@ -64,13 +62,11 @@ router.get("/:id", async (req, res) => {
 
     const receta = recetas[0];
 
-    // ingredientes
     const [ingredientes] = await db.query(
       "SELECT nombre FROM ingredientes WHERE receta_id = ?",
       [id]
     );
 
-    // pasos
     const [pasos] = await db.query(
       "SELECT descripcion, imagen FROM pasos WHERE receta_id = ?",
       [id]
@@ -82,6 +78,22 @@ router.get("/:id", async (req, res) => {
       pasos
     });
 
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.patch("/:id/favorito", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { favorito } = req.body;
+
+    await db.query(
+      "UPDATE recetas SET favorito = ? WHERE id = ?",
+      [favorito, id]
+    );
+
+    res.json({ ok: true });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

@@ -1,4 +1,4 @@
-import { borrarReceta } from "../services/api-recetas.js";
+import { borrarReceta, recetaFavorita } from "../services/api-recetas.js";
 
 //Crea tarjetas de las distintas recetas guardadas en la BBDD
 export function crearBloqueReceta(recetas) {
@@ -9,7 +9,7 @@ export function crearBloqueReceta(recetas) {
   creaReceta.href = `./plantilla-receta.html?id=${recetas.id}`;
 
   const ponImagen = document.createElement("img");
-  ponImagen.src = recetas.imagen || "./resources/default.jpg";
+  ponImagen.src = recetas.imagen || "./resources/square-image.jpg";
   ponImagen.alt = recetas.titulo || "Receta";
 
   const ponTitulo = document.createElement("h2");
@@ -35,17 +35,45 @@ export function crearBloqueReceta(recetas) {
       await borrarReceta(recetas.id);
 
       creaReceta.remove();
-
     } catch (error) {
       console.error(error);
       alert("No se pudo borrar la receta");
     }
   });
-  const favIcon = document.createElement("i");
-  favIcon.classList.add("fa-regular", "fa-star");
-  favIcon.tabIndex = "0";
 
-  creaReceta.append(ponImagen, ponTitulo, ponDesc, ponBoton, favIcon);
+  const creaBttnFav = document.createElement("i");
+
+  // pintar estado inicial
+  if (recetas.favorito == 1) {
+    creaBttnFav.classList.add("fa-solid", "fa-star", "activado");
+  } else {
+    creaBttnFav.classList.add("fa-regular", "fa-star");
+  }
+
+  creaBttnFav.addEventListener("click", async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // invertir estado real
+    recetas.favorito = recetas.favorito === 1 ? 0 : 1;
+
+    try {
+      await recetaFavorita(recetas.id, recetas.favorito);
+
+      // sincronizar UI con estado real
+      if (recetas.favorito === 1) {
+        creaBttnFav.classList.remove("fa-regular");
+        creaBttnFav.classList.add("fa-solid", "activado");
+      } else {
+        creaBttnFav.classList.remove("fa-solid", "activado");
+        creaBttnFav.classList.add("fa-regular");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  });
+
+  creaReceta.append(ponImagen, ponTitulo, ponDesc, ponBoton, creaBttnFav);
 
   listaRecetas.appendChild(creaReceta);
 }
