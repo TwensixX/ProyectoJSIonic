@@ -34,7 +34,7 @@ export function rellenarFormulario(receta) {
   document.querySelector("titulo-receta").value = receta.titulo;
   document.querySelector("desc-receta").value = receta.descripcion;
 
-  /* const contIng = document.getElementById("listaIngredientes");
+  const contIng = document.getElementById("listaIngredientes");
   contIng.innerHTML = "";
 
   receta.ingredientes.forEach(i => {
@@ -57,5 +57,5 @@ export function rellenarFormulario(receta) {
 
     div.appendChild(textarea);
     contPasos.appendChild(div);
-  }); */
+  });
 }

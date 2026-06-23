@@ -4,6 +4,7 @@ if (document.querySelector("#listaRecetas")) {
 
 if (document.querySelector("#formReceta")) {
   import("./pages/form-receta.js");
+
 }
 
 if (document.querySelector("#vistaReceta")) {

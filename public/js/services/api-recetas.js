@@ -53,36 +53,6 @@ export async function obtenerRecetaPorId(id) {
   return await res.json();
 }
 
-export async function obtenerRecetasPorCategoria(categoria = "todas") {
-  const url = categoria === "default"
-    ? "/api/recetas"
-    : `/api/recetas?categoria=${categoria}`;
-
-  const res = await fetch(url);
-
-  if (!res.ok) {
-    throw new Error("Error al obtener recetas");
-  }
-
-  return await res.json();
-}
-
-export async function actualizarReceta(id, receta) {
-  const response = await fetch(`/api/recetas/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(receta)
-  });
-
-  if (!response.ok) {
-    throw new Error("Error al actualizar receta");
-  }
-
-  return await response.json();
-}
-
 export async function borrarReceta(id) {
   const res = await fetch(`/api/recetas/${id}`, {
     method: "DELETE"

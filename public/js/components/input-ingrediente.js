@@ -1,5 +1,5 @@
 //Crea un input para escribir y un botón para borrar los input
-export function crearInputIngrediente(valor = "") {
+export function crearInputIngrediente() {
   const listaIngredientes = document.querySelector("#listaIngredientes ul");
 
   const creaLi = document.createElement("li");
@@ -7,7 +7,6 @@ export function crearInputIngrediente(valor = "") {
   const creaInputTexto = document.createElement("input");
   creaInputTexto.type = "text";
   creaInputTexto.name = "ingredientes[]";
-  creaInputTexto.value = valor;
   creaInputTexto.classList.add("ingrediente");
   creaInputTexto.maxLength = 40;
 
