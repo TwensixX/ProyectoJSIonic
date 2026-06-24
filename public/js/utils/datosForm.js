@@ -6,7 +6,7 @@ export function obtenerDatosFormulario() {
   const titulo = document.getElementById("tituloRecetaInput").value;
 
   const descripcion = document.getElementById("descRecetaInput").value;
-
+  
   const ingredientes = [...document.querySelectorAll('[name="ingredientes[]"]')]
     .map(input => input.value.trim())
     .filter(v => v !== "");
@@ -28,6 +28,7 @@ export function obtenerDatosFormulario() {
     titulo,
     descripcion,
     ingredientes,
-    pasos
+    pasos,
+    0
   );
 }
